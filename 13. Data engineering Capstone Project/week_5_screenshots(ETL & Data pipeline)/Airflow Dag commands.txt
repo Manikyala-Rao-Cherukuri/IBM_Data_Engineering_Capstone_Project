@@ -1,0 +1,29 @@
+Shell script commands:
+
+-d":" - delimiter
+-f1 field number
+-s " "- squeeze the repeated charactes/spaces in a word with only one.
+cut - used to extract the data
+tr - transform data
+cat - print the file data at output
+bash - used to run the .sh file
+cp - copying files from one location to another
+grep - a command used in searching and matching text files contained in the regular expressions.
+
+Airflow:
+CommandLine: 
+ • List DAGs: airflow dags list
+ • List Tasks: airflow tasks list example_bash_operator
+ • Run an example task: airflow tasks test example_bash_operator runme_1 2015-06-01
+
+
+-- need to use this command before coping the file from one location to other location
+
+sudo chmod -R 777 /folder-location i.e., /home/project/airflow/dags/capstone
+
+-- file copy command from source to destination
+cp accesslog.txt /home/project/airflow/dags/capstone
+
+==============
+while making directory if your getting error using this command "mkdir directory_name" use below command in that case
+sudo mkdir directory_name
