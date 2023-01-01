@@ -1,0 +1,43 @@
+"port": 30376
+"database": "bludb"
+"password": "opQMPZ92ndM1k9Mw",
+        "username": "drf13990"
+
+    "hosts": [
+        {
+          "hostname": "6667d8e9-9d4d-4ccb-ba32-21da3bb5aafc.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud",
+          "port": 30376
+        }
+      ]
+
+db2cli writecfg add -database BLUDB -host 6667d8e9-9d4d-4ccb-ba32-21da3bb5aafc.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud -port 30376 -parameter "SecurityTransportMode=SSL"
+
+
+db2cli writecfg add -dsn production -database BLUDB -host 6667d8e9-9d4d-4ccb-ba32-21da3bb5aafc.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud -port 30376
+-------------------------------
+Data source connection verification:
+
+db2cli validate -dsn production -connect -user drf13990 -passwd opQMPZ92ndM1k9Mw
+
+
+
+db2cli execsql -dsn production -user drf13990 -passwd opQMPZ92ndM1k9Mw -inputsql star-schema.sql
+
+loading data into data warehouse:
+
+db2cli execsql -dsn production -user drf13990 -passwd opQMPZ92ndM1k9Mw -inputsql DimCustomer.sql
+db2cli execsql -dsn production -user drf13990 -passwd opQMPZ92ndM1k9Mw -inputsql DimMonth.sql
+db2cli execsql -dsn production -user drf13990 -passwd opQMPZ92ndM1k9Mw -inputsql FactBilling.sql
+
+verify the data in data warehouse:
+
+db2cli execsql -dsn production -user drf13990 -passwd opQMPZ92ndM1k9Mw -inputsql verify.sql
+
+
+sql interactive shell to the production environment on cloud dsn data source name
+
+db2cli execsql -dsn production -user drf13990 -passwd opQMPZ92ndM1k9Mw
+
+
+"jdbc_url": [
+        "jdbc:db2://6667d8e9-9d4d-4ccb-ba32-21da3bb5aafc.c1ogj3sd0tgtu0lqde00.databases.appdomain.cloud:30376/bludb:user=<userid>;password=<your_password>;sslConnection=true;"
