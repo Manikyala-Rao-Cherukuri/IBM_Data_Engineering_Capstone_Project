@@ -1,0 +1,58 @@
+--Postgresql
+login: manikyamcher
+pw: MzIzMzMtbWFuaWt5
+
+--command to connect to the data base in postgresql
+\connect database name
+
+--To set the proper search path for your database, enter the following into the CLI:
+
+SELECT pg_catalog.set_config('search_path', 'bookings', false);
+
+--To see the restored tables in the database, enter:
+\dt
+
+======================================
+--MySql
+login: manikyamcher
+pw:Mjk5MDItbWFuaWt5
+
+--logical backup
+--mysql termial backup command
+mysqldump --host=127.0.0.1 --port=3306 --user=root --password world countrylanguage > world_countrylanguage_mysql_backup.sq
+
+-- terminal command to drop a table
+mysql --host=127.0.0.1 --port=3306 --user=root --password --execute="DROP TABLE world_P1.city;"
+
+-- termial command to backup the database
+mysql --host=127.0.0.1 --port=3306 --user=root --password world_P1 < world_P1_city_mysql_backup.sql
+
+-- terminal command to select a table
+
+mysql --host=127.0.0.1 --port=3306 --user=root --password --execute="SELECT * FROM world_P1.city;"
+
+====================
+-- CLI command to view the content of backup file
+cat world_countrylanguage_mysql_backup.sql
+
+--CLI command to backup the deleted table
+mysql --host=127.0.0.1 --port=3306 --user=root --password world < world_countrylanguage_mysql_backup.sql
+
+--First create a full logical backup of the current state of your whole world database. 
+mysqldump --host=127.0.0.1 --port=3306 --user=root --password --flush-logs --delete-master-logs  --databases world > world_mysql_full_backup.sql
+
+-- physical data directory backup command
+docker cp mysql-mysql-1:/var/lib/mysql/world_P2 /home/project/mysql_world_P2_backup
+
+--physical data directory restore command
+docker cp /home/project/mysql_backup/. mysql-mysql-1:/var/lib/mysql
+
+docker cp /home/project/mysql_world_P2_backup/. mysql-mysql-1:/var/lib/mysql/world_P2
+
+
+
+
+
+
+
+
