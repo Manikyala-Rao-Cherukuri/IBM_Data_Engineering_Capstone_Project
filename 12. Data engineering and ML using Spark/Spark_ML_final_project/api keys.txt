@@ -1,0 +1,19 @@
+Bucket name: cloud-object-storage-96-cos-standard-qap
+---------------
+
+Location: jp-tok
+----------------------
+"cos_hmac_keys": {
+    "access_key_id": "768bf17dda394dae93aa673844a80dfd",
+    "secret_access_key": "abd10fd5f1e13c27196335b5966c78786b0fad32336d22d7"
+----------------------
+public end point:
+s3.jp-tok.cloud-object-storage.appdomain.cloud
+
+------------------------
+space_guide
+2e6de385-8310-4d27-ab1c-8f4d6aa6912e
+
+think API key -- zPbBFfQ9LVHnauI5IszkuUFtW_It-v2l9q99KZRwq2RS
+
+WatsonMachineLearning
