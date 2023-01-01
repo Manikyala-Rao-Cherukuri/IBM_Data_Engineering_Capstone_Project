@@ -1,0 +1,39 @@
+-*******-mongoDB (below command helps to login to the mongoDB terminal)
+mongo -u root -p NjAtbWFuaWt5YW1j --authenticationDatabase admin local 
+
+-- import from json
+
+mongoimport -u root -p NjAtbWFuaWt5YW1j --authenticationDatabase admin --db entertainment --collection movies --file movies.json
+
+-- export to json
+
+mongoexport -u root -p NjAtbWFuaWt5YW1j --authenticationDatabase admin --db entertainment --collection movies --out partial_data.json
+
+--export to csv
+
+mongoexport -u root -p NjAtbWFuaWt5YW1j --authenticationDatabase admin --db entertainment --collection movies --out partial_data.csv --type=csv --fields _id,title,year,rating,director
+
+-******- cassandra
+
+-- Below command helps to login to the cassandra terminal
+
+cqlsh --username cassandra --password ODY1NC1tYW5pa3lh
+
+-- create keyspace in casandra
+CREATE KEYSPACE entertainment  
+WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+
+-- creating a table in cassandra
+
+use entertainment; 
+CREATE TABLE movies(
+id int PRIMARY KEY,
+title text,
+year text,
+rating text,
+director text
+);
+
+-- load data into csv
+use entertainment;
+COPY entertainment.movies(id,title,year,rating,director) FROM 'partial_data.csv' WITH DELIMITER=',' AND HEADER=TRUE;
