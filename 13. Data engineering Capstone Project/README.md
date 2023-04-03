@@ -1,5 +1,5 @@
 ## IBM Data Engineering Capstone Project 
-- worked e-commerce (sales data) assumed the role as Junior data engineer. 
+- worked on e-commerce (sales data) by assuming the role as Junior data engineer. 
 ### Module_1:
 -	Created a database on MySql for OLTP (i.e., for sales data).
 -	Created a sales_data table and then loaded the data into it using PhpMyAdmin GUI.
